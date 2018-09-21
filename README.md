@@ -6,6 +6,9 @@ in each project's properties (ALT-ENTER).
 -> RETARGET solution
 
 # Revision histrory
+### 20180921/R107
+* Update to torito-C 20180920/R106 that provides VS2017/15.8 support
+* cleanup project settings, remove default C library from solution/project view
 ### 20180831
 * initial revision -> the MORE command
 
