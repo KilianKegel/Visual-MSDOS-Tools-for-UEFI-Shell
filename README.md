@@ -6,6 +6,8 @@ in each project's properties (ALT-ENTER).
 -> RETARGET solution
 
 # Revision histrory
+### 20181129/R116
+* Update to torito-C 20181129/R116 that provides various improvements
 ### 20181112/R110
 * Update to torito-C 20181112/R110 that provides scanf-family improvements
 ### 20180921/R107
