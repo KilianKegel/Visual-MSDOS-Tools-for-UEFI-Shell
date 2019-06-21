@@ -217,6 +217,7 @@
       <AdditionalOptions>..\libraries\toritoC64R.lib %(AdditionalOptions)</AdditionalOptions>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
+      <LinkTimeCodeGeneration />
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
