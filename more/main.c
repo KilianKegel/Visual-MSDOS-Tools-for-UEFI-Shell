@@ -34,7 +34,7 @@
 
 extern EFI_SYSTEM_TABLE* gST;
 
-#define ELC(x) ( sizeof(x) / sizeof(x[0]) )
+#define ELC(x) ( sizeof(x) / sizeof(x[0]) ) /* element count */
 
 int main(int argc, char** argv) {
     UINTN Cols, Rows, Line = 0;
