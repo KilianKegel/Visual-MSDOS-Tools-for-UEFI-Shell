@@ -1,10 +1,11 @@
 /*!
 @copyright
-    Copyright (c) 2019, Joaquin Cono Bolillo. All rights reserved.
+    Copyright (c) 2019, Kilian Kegel. All rights reserved.
     This program and the accompanying materials are licensed and made
     available under the terms and conditions of the BSD License
     which accompanies this distribution.  The full text of the license
     may be found at
+
     http://opensource.org/licenses/bsd-license.php
     THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
     WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
@@ -13,16 +14,19 @@
 
 @details \n
 @todo
+    1. add UTF16 vs ASCII distinction for directly passed files
+        e.g. more UTF16File1.txt UTF16File2.txt - still fails
+        but more < UTF16File.txt - works!
 @mainpage
     <b><em>MORE</em></b> command for UEFI Shell
 @section intro_sec Introduction
     The <b><em>MORE</em></b> command for UEFI shell\n
 
-    <b>NOTE: This implementation ONLY deals with ASCII. It fails with UNICODE / WIDECHARACTER!!!</b>
+@subsection Parm_sec Command line parameter examples
+    1. type AsciiOrUTF16File.txt  | more
+    2. dir  AsciiOrUTF16File.txt  | more
+    3. more AsciiFile1.txt AsciiFile2.txt AsciiFile3.txt
 
-@subsection Parm_sec Command line parameters
-    1. type asciifile |2 more
-    2. more asciifile1 asciifile2 asciifile3
 */#define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -30,7 +34,6 @@
 #include <string.h>
 #undef NULL
 #include <uefi.h>
-
 
 extern EFI_SYSTEM_TABLE* gST;
 
@@ -86,7 +89,8 @@ int main(int argc, char** argv) {
             printf("%s\n", p);                                                              // print the text line
             p = strtok(NULL, "\n");                                                         // get the next text line
         }
-        fclose(fp);                                                                         // close fp, that was opened above
+        if(stdin != fp)
+            fclose(fp);                                                                         // close fp, that was opened above
     } while (++n < argc);                                                                   // next file...
 
     return EFI_SUCCESS;

@@ -6,6 +6,10 @@ in each project's properties (ALT-ENTER).
 -> RETARGET solution
 
 # Revision histrory
+### 20190922
+* add FIND command
+* Update to torito-C 20190621/R138 that autodetects I/O redirection UTF16 vs. ASCII
+* add support for VS2019 ver 16.2.5
 ### 20190621
 * improve MORE command, added command line parameter
 * Update to torito - C 20190621 / R133 that adds VS2019 support, remove library dependancy from compiler version
