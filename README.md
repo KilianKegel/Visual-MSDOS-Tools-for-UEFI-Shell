@@ -18,7 +18,12 @@ as a Win64-executable (change the solution configuration from Efi64 to Win64 ).
 ## HowTo
 https://github.com/KilianKegel/HowTo-setup-an-UEFI-Development-PC#howto-setup-an-uefi-development-pc
 
-# Revision history
+## Revision history
+https://github.com/KilianKegel/torito-C-Library#revision-history
+### 20200204/R154
+* Update to torito-C 20200204/R154
+* adjust solution configurations
+* update copyright
 ### 20191018/R141
 * update Torito C Library https://github.com/KilianKegel/torito-C-Library#20191017r141
 ### 20190922
