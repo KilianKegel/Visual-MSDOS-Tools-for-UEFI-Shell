@@ -20,6 +20,8 @@ https://github.com/KilianKegel/HowTo-setup-an-UEFI-Development-PC#howto-setup-an
 
 ## Revision history
 https://github.com/KilianKegel/torito-C-Library#revision-history
+### 20210825
+* Update to Microsoft Visual Studio Community 2022 Preview (64-bit), Version 17.0.0 Preview 3.1
 ### 20210820/R166
 * Update to torito-C 20210820/R166
 ### 20200204/R154
