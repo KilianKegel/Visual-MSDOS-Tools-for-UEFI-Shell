@@ -1,5 +1,5 @@
 # Visual DOS-Tools for UEFI Shell
-Create and debug DOS-Tools for UEFI Shell using Visual Studio 2017/2019.
+Create and debug DOS-Tools for UEFI Shell using Visual Studio 2022.
 ## Goal
 Demonstration off how to implement DOS/UNIX software tools to access
 the UEFI platform.
@@ -8,7 +8,7 @@ The projects are kept small and simple to introduce the UEFI shell
 programming using "ANSI C", easily and quickly.
 
 ## Approach
-It is intended to use Visual Studio 2019 as the only development environment.
+It is intended to use Visual Studio 2022 as the only development environment.
 Furthermore it is intended to use ANSI-C library functions as far as possible.
 
 Doing so, the UEFI Shell applications can be easily debugged
