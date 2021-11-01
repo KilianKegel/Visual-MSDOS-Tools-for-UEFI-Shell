@@ -35,8 +35,6 @@
 #undef NULL
 #include <uefi.h>
 
-extern EFI_SYSTEM_TABLE* gST;
-
 #define ELC(x) ( sizeof(x) / sizeof(x[0]) ) /* element count */
 
 int main(int argc, char** argv) {
@@ -44,8 +42,10 @@ int main(int argc, char** argv) {
     int c, i, n = 1;
     char* pBuf, * p;
     FILE* fp = stdin;                                                                       // take file from STDIN, by default
+    EFI_SYSTEM_TABLE*pEfiSystemTable = (void*)(argv[-1]);   // pEfiSystemTable is passed in argv[-1]
+    EFI_HANDLE* hEfiImageHandle = (void*)(argv[-2]);        // ImageHandle is passed in argv[-2]
 
-    gST->ConOut->QueryMode(gST->ConOut, (UINTN)gST->ConOut->Mode->Mode, &Cols, &Rows);      // get number of text lines of the screen
+    pEfiSystemTable->ConOut->QueryMode(pEfiSystemTable->ConOut, (UINTN)pEfiSystemTable->ConOut->Mode->Mode, &Cols, &Rows);      // get number of text lines of the screen
 
     do {
         //
@@ -80,8 +80,8 @@ int main(int argc, char** argv) {
                 EFI_STATUS Status;
                 printf("-- More --");
                 do {                                                                        // read real kbhit(), since STDIN is redirected
-                    gST->BootServices->WaitForEvent(1, gST->ConIn->WaitForKey, &Index);
-                    Status = gST->ConIn->ReadKeyStroke(gST->ConIn, &Key);
+                    pEfiSystemTable->BootServices->WaitForEvent(1, pEfiSystemTable->ConIn->WaitForKey, &Index);
+                    Status = pEfiSystemTable->ConIn->ReadKeyStroke(pEfiSystemTable->ConIn, &Key);
                 } while (EFI_SUCCESS != Status);
                 printf("\n");
                 Line = 0;
