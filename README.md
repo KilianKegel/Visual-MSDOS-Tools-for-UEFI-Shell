@@ -203,7 +203,7 @@ since in the **toro C Library** implementation `stdin` internally always provide
 ##### NOTE: Wide functions based on `fgetwc()` just stretch single byte characters to wide size. Getting true UTF16LE access to files needs additional, non-standard `fopen()` flags, that are not yet available in **toro C Library**: https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/fopen-wfopen?view=msvc-170#unicode-support
 
 There are three different cases,  handled internally/automatically by the *operating system interface (`osif`)*
-[`osifUefiShellFileRead()`](osifUefiShellFileRead.c)
+[`osifUefiShellFileRead()`](https://github.com/tianocore/edk2-staging/blob/CdePkg/blogs/2021-11-28/osifUefiShellFileRead.c)
 
 ![operating system interface](https://github.com/tianocore/edk2-staging/blob/CdePkg/archview.png)
 
