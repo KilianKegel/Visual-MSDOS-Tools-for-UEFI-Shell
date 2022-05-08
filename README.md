@@ -141,7 +141,7 @@ The enclosing quotation marks prevent the scanner from splitting at space charac
 gets one single `argv[]`; inside `main()` the `""` quotation marks are not visible.<br>
 https://docs.microsoft.com/en-us/cpp/c-language/parsing-c-command-line-arguments<br>
 
-In **toro C Library** that corresponding function is called [`_cdeStr2Argcv()`](_cdeStr2Argcv.c).
+In **toro C Library** that corresponding function is called [`_cdeStr2Argcv()`](https://github.com/tianocore/edk2-staging/blob/CdePkg/blogs/2021-11-28/_cdeStr2Argcv.c).
 
 Since this piece of source code runs when linking **toro C Library** for Windows and for UEFI Shell,
 its correctness was proven in the Windows command line and compared to a original Microsoft LIBCMT.LIB build with  many different test patterns.
@@ -347,7 +347,7 @@ Otherwise `EFI_FILE_PROTOCOL.Read()` transfers directly to the internal 'stdin' 
 ### Reading lines from file(s)
 Standard C provides the function [`fgets()`](https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/fgets-fgetws?view=msvc-170&viewFallbackFrom=vs-2019) 
 to read line-wise from a stream. A line is terminated by a new line character `'\n'`.
-In **toro C Library** this function is implemented that way: [fgets.c](fgets.c)
+In **toro C Library** this function is implemented that way: [fgets.c](https://github.com/tianocore/edk2-staging/blob/CdePkg/blogs/2021-11-28/fgets.c)
 
 As already mentioned [above](README.md#note-wide-functions-based-on-fgetwc-just-stretch-single-byte-characters-to-wide-size-getting-true-utf16le-access-to-files-needs-additional-non-standard-fopen-flags-that-are-not-yet-available-in-toro-c-library-httpsdocsmicrosoftcomen-uscppc-runtime-libraryreferencefopen-wfopenviewmsvc-170unicode-support)
 it makes no sense to use the wide version `fgetws()` here. 
