@@ -116,7 +116,7 @@ or a direct console input.
 `FIND.EFI` is created in the VS2022CLI box. <br>
 To start this, please refer to https://github.com/tianocore/edk2-staging/tree/CdePkg/blogs/2021-11-14#starting-visual-studio-2022 <br>
 
-It is created out of one single file of sourcecode: [`FIND.C`](find\main.c).
+It is created out of one single file of sourcecode: [`FIND.C`](find/main.c).
 
 If you want to build `FIND.EFI` only, and not its Windows-versions, just type:<br>
 `cl /nologo /GS- /D_NO_CRT_STDIO_INLINE /D_CRT_SECURE_NO_WARNINGS find.c /link /NODEFAULTLIB /ENTRY:_cdeCRT0UefiShell /SUBSYSTEM:EFI_APPLICATION /out:find.efi lib\toroC64.lib`
@@ -413,7 +413,7 @@ It does also not check the length of a line, so if a wrap around occurs, one lin
 `MORE.EFI` is created in the VS2022CLI box. <br>
 To start this, please refer to https://github.com/tianocore/edk2-staging/tree/CdePkg/blogs/2021-11-14#starting-visual-studio-2022 <br>
 
-It is created out of one single file of sourcecode: [`MORE.C`](more\main.c).
+It is created out of one single file of sourcecode: [`MORE.C`](more/main.c).
 
 If you want to build `MORE.EFI` just type:<br>
 `cl /nologo /GS- /D_NO_CRT_STDIO_INLINE /D_CRT_SECURE_NO_WARNINGS /IMdePkgInc /IMdePkgInc\X64 more.c /link /NODEFAULTLIB /ENTRY:_cdeCRT0UefiShell /OUT:more.efi /SUBSYSTEM:EFI_APPLICATION lib\toroC64.lib`
