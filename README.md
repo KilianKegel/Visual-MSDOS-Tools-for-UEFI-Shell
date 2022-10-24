@@ -544,6 +544,8 @@ Lines 79 to 82 do the same on UEFI API basis.
 
 ## Revision history
 https://github.com/KilianKegel/torito-C-Library#revision-history
+### 20221024
+* update to **TORO C Library** *20221022*
 ### 20220507
 * update/improve `find`, `more` to support both 8+16Bit `stdin`
 * add program documentation
