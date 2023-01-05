@@ -544,6 +544,8 @@ Lines 79 to 82 do the same on UEFI API basis.
 
 ## Revision history
 https://github.com/KilianKegel/torito-C-Library#revision-history
+### 20230104
+* update to **TORO C Library** *20230104*
 ### 20221024
 * update to **TORO C Library** *20221022*
 ### 20220507
