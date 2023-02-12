@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29230.47
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "more", "more\more.vcxproj", "{83E4D1F0-DA3A-4A02-9F29-B474E283E067}"
 EndProject
@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3D9D374A-9B74-487C-9DEC-D4B4040D609B}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		lib\README.md = lib\README.md
 	EndProjectSection
 EndProject
 Global
