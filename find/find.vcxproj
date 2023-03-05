@@ -68,12 +68,14 @@
     <GenerateManifest>false</GenerateManifest>
     <TargetName>$(MSBuildProjectName)</TargetName>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)\includes\MdePkg\Include;$(SolutionDir)\includes\MdePkg\Include\x64;$(SolutionDir)\includes\MdePkg\Include\Protocol</IncludePath>
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='WinNTx86-64 (Microsoft C Library)|x64'">
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <TargetName>$(MSBuildProjectName)</TargetName>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)\includes\MdePkg\Include;$(SolutionDir)\includes\MdePkg\Include\x64;$(SolutionDir)\includes\MdePkg\Include\Protocol</IncludePath>
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UEFIx86-64 (Torito C Library)|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -82,6 +84,7 @@
     <TargetExt>.efi</TargetExt>
     <IncludePath>$(SolutionDir)\includes\MdePkg\Include;$(SolutionDir)\includes\MdePkg\Include\x64;$(SolutionDir)\includes\MdePkg\Include\Protocol;$(IncludePath)</IncludePath>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='WinNTx86-64 (Torito C Library)|x64'">
     <ClCompile>
@@ -102,6 +105,9 @@
       <AdditionalOptions>/D_NO_CRT_STDIO_INLINE %(AdditionalOptions)</AdditionalOptions>
       <CompileAs>CompileAsC</CompileAs>
       <AssemblerOutput>All</AssemblerOutput>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <SupportJustMyCode>false</SupportJustMyCode>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,6 +140,9 @@
       <AdditionalOptions>/D_NO_CRT_STDIO_INLINE %(AdditionalOptions)</AdditionalOptions>
       <CompileAs>CompileAsC</CompileAs>
       <AssemblerOutput>All</AssemblerOutput>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <SupportJustMyCode>false</SupportJustMyCode>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -167,6 +176,7 @@
       <AssemblerOutput>All</AssemblerOutput>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <OmitFramePointers>true</OmitFramePointers>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
@@ -190,6 +200,7 @@
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
       <AdditionalOptions>/IGNORE:4078 %(AdditionalOptions)</AdditionalOptions>
+      <LinkTimeCodeGeneration />
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>

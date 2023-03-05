@@ -544,6 +544,10 @@ Lines 79 to 82 do the same on UEFI API basis.
 
 ## Revision history
 https://github.com/KilianKegel/torito-C-Library#revision-history
+### 20230305
+* update to **TORO C Library** *20230304*
+* improve `MORE.EFI` to skip screen wise display on redirected `stdout`
+* fix `MORE.EFI` to print garbage on non-new-line-character-terminated text files
 ### 20230212
 * update to **TORO C Library** *20230212*
 ### 20230104

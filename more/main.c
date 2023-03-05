@@ -26,6 +26,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <io.h>
 #undef NULL
 #include <uefi.h>
 
@@ -40,12 +41,16 @@ int main(int argc, char** argv) {
     FILE* fp = stdin;                                               // take file from STDIN, by default
     char fUTF16 = 0;                                                // flag file format
     int nRet = EXIT_SUCCESS;
+    int fRedir = (0 == _isatty(_fileno(stdout)));                   // is redirected to a file?
 
-    pEfiSystemTable->ConOut->QueryMode(                             // get number of text lines of the screen
-        pEfiSystemTable->ConOut,
-        (UINTN)pEfiSystemTable->ConOut->Mode->Mode,
-        &Cols, &Rows
-    );
+    if (!fRedir)                                                    // if _not_ redirected to a file
+    {
+        pEfiSystemTable->ConOut->QueryMode(                         // get number of text lines of the screen
+            pEfiSystemTable->ConOut,
+            (UINTN)pEfiSystemTable->ConOut->Mode->Mode,
+            &Cols, &Rows
+        );
+    }
 
     do {
         //
@@ -74,8 +79,8 @@ int main(int argc, char** argv) {
         //
         idiv = fUTF16 ? 2 : 1;                                      // adjust idiv to decide skip zero high byte 
         pBuf = NULL;                                                // inital request for realloc()
-        for (i = 0; EOF != (c = fgetc(fp)); i++) {                 // read character from file/STDIN until EOF
-            if (fUTF16)                                              // fif UTF16 file format...
+        for (i = 0; EOF != (c = fgetc(fp)); i++) {                  // read character from file/STDIN until EOF
+            if (fUTF16)                                             // if UTF16 file format...
                 if (0 != (i % 2))                                   // ... if zero high byte...
                     continue;                                       // ... skip that byte and continue
             pBuf = realloc(pBuf, i / idiv + 1);                     // allocate buffer / increase buffersize
@@ -90,17 +95,20 @@ int main(int argc, char** argv) {
         //
         for (Line = 0, p = strtok(pBuf, "\n"); p != NULL; Line++)   // display the text screen wise
         {
-            if (Rows == 1 + Line) {
-                UINTN Index;
-                EFI_INPUT_KEY Key;
-                EFI_STATUS Status;
-                printf("-- More --");
-                do {                                                // read real kbhit(), since STDIN is redirected
-                    pEfiSystemTable->BootServices->WaitForEvent(1, pEfiSystemTable->ConIn->WaitForKey, &Index);
-                    Status = pEfiSystemTable->ConIn->ReadKeyStroke(pEfiSystemTable->ConIn, &Key);
-                } while (EFI_SUCCESS != Status);
-                printf("\n");
-                Line = 0;
+            if (0 == fRedir) 
+            {
+                if (Rows == 1 + Line) {
+                    UINTN Index;
+                    EFI_INPUT_KEY Key;
+                    EFI_STATUS Status;
+                    printf("-- More --");
+                    do {                                                // read real kbhit(), since STDIN is redirected
+                        pEfiSystemTable->BootServices->WaitForEvent(1, pEfiSystemTable->ConIn->WaitForKey, &Index);
+                        Status = pEfiSystemTable->ConIn->ReadKeyStroke(pEfiSystemTable->ConIn, &Key);
+                    } while (EFI_SUCCESS != Status);
+                    printf("\n");
+                    Line = 0;
+                }
             }
             printf("%s\n", p);                                      // print the text line
             p = strtok(NULL, "\n");                                 // get the next text line
