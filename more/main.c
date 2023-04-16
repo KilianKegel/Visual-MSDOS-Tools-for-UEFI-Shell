@@ -35,7 +35,7 @@
 int main(int argc, char** argv) {
     EFI_SYSTEM_TABLE* pEfiSystemTable = (void*)(argv[-1]);          // pEfiSystemTable is passed in argv[-1]
     EFI_HANDLE* hEfiImageHandle = (void*)(argv[-2]);                // ImageHandle is passed in argv[-2]
-    UINTN Cols, Rows, Line = 0;                                     //
+    UINTN Cols, Rows, Line = 0,LineLength, RowsPerLine;             //
     int c, i, n = 1, idiv = 1;                                      //
     char* pBuf, * p;                                                //
     FILE* fp = stdin;                                               // take file from STDIN, by default
@@ -93,20 +93,25 @@ int main(int argc, char** argv) {
         //
         // Buffer contains the entire file now. Print file line-wise to the screen and stop after # rows and wait for key
         //
-        for (Line = 0, p = strtok(pBuf, "\n"); p != NULL; Line++)   // display the text screen wise
+        for (Line = 0, p = strtok(pBuf, "\n"); p != NULL; Line += RowsPerLine)   // display the text screen wise
         {
+            LineLength = strlen(p);
+            RowsPerLine = LineLength / Cols + 1;
+
             if (0 == fRedir) 
             {
-                if (Rows == 1 + Line) {
+                if (Rows <= RowsPerLine + Line) {
                     UINTN Index;
                     EFI_INPUT_KEY Key;
                     EFI_STATUS Status;
                     printf("-- More --");
-                    do {                                                // read real kbhit(), since STDIN is redirected
+                    do {                                            // read real kbhit(), since STDIN is redirected
                         pEfiSystemTable->BootServices->WaitForEvent(1, pEfiSystemTable->ConIn->WaitForKey, &Index);
                         Status = pEfiSystemTable->ConIn->ReadKeyStroke(pEfiSystemTable->ConIn, &Key);
                     } while (EFI_SUCCESS != Status);
-                    printf("\n");
+                    printf("\r\r\r\r\r\r\r\r\r\r");                 // back to start of line
+                    printf("          ");                           // overwrite "-- More --"
+                    printf("\r\r\r\r\r\r\r\r\r\r");                 // back to start of line
                     Line = 0;
                 }
             }
