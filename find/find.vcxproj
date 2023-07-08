@@ -17,6 +17,12 @@
   <ItemGroup>
     <ClCompile Include="main.c" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="test.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="123.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{e51d7e84-ffb1-40dd-9130-afb569a0aed0}</ProjectGuid>
