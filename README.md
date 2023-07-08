@@ -39,7 +39,7 @@ NOTE: The text below was originally published at the [tianocore/edk2-staging](ht
         * [2. stdin is redirected, BOM is not detected](README.md#2-stdin-is-redirected-bom-is-not-yet-detected)
         * [3. stdin is redirected, BOM is detected](README.md#3-stdin-is-redirected-bom-is-detected)
     * [Reading lines from file(s)](README.md#reading-lines-from-files)
-    * [Exitcodes](README.md#exitcodes-findc)
+    * [Exitcodes](README.md#exitcodes-findefi)
 * [In a nutshell: `MORE.EFI`](README.md#in-a-nutshell-morefi)
 * [Building: `MORE.EFI`](README.md#building-moreefi)
 * [Internal Processing: MORE.C](README.md#internal-processing-morec)
@@ -554,7 +554,7 @@ Lines 79 to 82 do the same on UEFI API basis.
 ## Revision history
 https://github.com/KilianKegel/torito-C-Library#revision-history
 ### 20230708
-* add `FIND.EFI` [Exitcodes](README.md#exitcodes-findc)
+* add `FIND.EFI` [Exitcodes](README.md#exitcodes-findefi)
 * update to **TORO C Library** *20230625*
 ### 20230416
 * add *overlong* line support for `more` command
