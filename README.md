@@ -1,4 +1,4 @@
-# Visual DOS-Tools for UEFI Shell
+# Visual MSDOS-Tools for UEFI Shell
 Create and debug DOS-Tools for UEFI Shell using Visual Studio 2022.
 ![visualUefi](visualMSDOSUefiWide.png)
 ## Goal
