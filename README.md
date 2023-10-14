@@ -553,6 +553,12 @@ Lines 79 to 82 do the same on UEFI API basis.
 
 ## Revision history
 https://github.com/KilianKegel/torito-C-Library#revision-history
+### 20231014
+* fixed: [**libxlsxwriter**](https://github.com/KilianKegel/Visual-LIBXLSXWRITER-for-UEFI-Shell#visual-libxlsxwriter-for-uefi-shell) based
+    UEFI and Windows applications create .XLSX that can't be opened with **Microsoft Excel 2016**. 
+    Office 365 online (https://www.microsoft365.com) and offline didn't fail.
+### 20230926
+* fixed: [`_strefieerror()`](https://github.com/KilianKegel/Visual-TORO-C-LIBRARY-for-UEFI/blob/main/toroCLibrary/Library/string_h/_StrEfiError.c) to return error correct string when running in pre-memory PEI
 ### 20230916
 * update to **TORO C Library** *20230916*
 ### 20230909
