@@ -35,7 +35,7 @@
 int main(int argc, char** argv) {
     EFI_SYSTEM_TABLE* pEfiSystemTable = (void*)(argv[-1]);          // pEfiSystemTable is passed in argv[-1]
     EFI_HANDLE* hEfiImageHandle = (void*)(argv[-2]);                // ImageHandle is passed in argv[-2]
-    UINTN Cols, Rows, Line = 0,LineLength, RowsPerLine;             //
+    UINTN Cols, Rows, Line = 0,LineLength, RowsPerLine = 0;         //
     int c, i, n = 1, idiv = 1;                                      //
     char* pBuf, * p;                                                //
     FILE* fp = stdin;                                               // take file from STDIN, by default
@@ -90,10 +90,10 @@ int main(int argc, char** argv) {
         }                                                           //
         pBuf[i / idiv] = '\0';                                      // set string termination
 
-        //
+        // 
         // Buffer contains the entire file now. Print file line-wise to the screen and stop after # rows and wait for key
         //
-        for (Line = 0, p = strtok(pBuf, "\n"); p != NULL; Line += RowsPerLine)   // display the text screen wise
+        do
         {
             LineLength = strlen(p);
             RowsPerLine = LineLength / Cols + 1;
@@ -112,13 +112,19 @@ int main(int argc, char** argv) {
                     printf("\r\r\r\r\r\r\r\r\r\r");                 // back to start of line
                     printf("          ");                           // overwrite "-- More --"
                     printf("\r\r\r\r\r\r\r\r\r\r");                 // back to start of line
-                    Line = 0;
-                }
-            }
-            printf("%s\n", p);                                      // print the text line
-            p = strtok(NULL, "\n");                                 // get the next text line
-        }
-        if (stdin != fp)
+                    Line = 0;                                       //
+                }                                                   //
+            }                                                       //
+                                                                    //
+            printf("%.*s", (int)strcspn(pBuf, "\n"), pBuf);         // write line (to NEW LINE
+            pBuf = &pBuf[strlen("\n") + strcspn(pBuf, "\n")];       // get address of next line
+                                                                    //
+            if ('\0' != pBuf[-1])                                   // check last line ...
+                fputc('\n',stdout);                                 // ...if not last line write NEW LINE
+                                                                    //
+        } while (Line += RowsPerLine, '\0' != pBuf[-1]);            //
+                                                                    //
+        if (stdin != fp)                                            //
             fclose(fp);                                             // close fp, that was opened above
     } while (++n < argc);                                           // next file...
 
